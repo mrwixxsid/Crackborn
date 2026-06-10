@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://bj530aifitpw1"]
+
+[ext_resource type="PackedScene" uid="uid://c27grk6uaced2" path="res://SCENE/UNIT/unit.tscn" id="1_dkwwj"]
+[ext_resource type="Script" uid="uid://btk5l1v5dr5md" path="res://SCENE/ENEMY/enemy.gd" id="2_2vs54"]
+[ext_resource type="Texture2D" uid="uid://d1ou504pylric" path="res://assets/sprites/Enemies/Enemy_1.png" id="2_eju6a"]
+[ext_resource type="Resource" uid="uid://dqano8whvgb7b" path="res://RESOURCES/UNITS/Enemy/stats_enemy_chaser_slow.tres" id="3_bf154"]
+[ext_resource type="PackedScene" uid="uid://dq2hli1ii5oew" path="res://SCENE/Components/hit_box_component.tscn" id="5_2wwa1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bf154"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eju6a"]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wwa1"]
+radius = 25.02
+
+[node name="EnemyChaserSlow" instance=ExtResource("1_dkwwj")]
+collision_layer = 2
+script = ExtResource("2_2vs54")
+flock_push = 20
+stats = ExtResource("3_bf154")
+
+[node name="sprite" parent="Visuals" index="1"]
+texture = ExtResource("2_eju6a")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_bf154")
+debug_color = Color(0.804285, 0.542852, 0.938695, 0.580392)
+
+[node name="VisionArea" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" index="0"]
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_eju6a")
+
+[node name="HitBoxComponent" parent="." index="5" instance=ExtResource("5_2wwa1")]
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_2wwa1")
+debug_color = Color(0, 0.537746, 0.965973, 0.42)
+
+[node name="HealthBar" parent="." index="7"]
+back_color = Color(0.0407784, 0, 0.347632, 1)
+fill_color = Color(0.974801, 0.9508, 0.460796, 1)

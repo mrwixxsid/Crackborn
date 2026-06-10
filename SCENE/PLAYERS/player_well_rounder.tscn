@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjrayavoijn8f"]
+
+[ext_resource type="PackedScene" uid="uid://c27grk6uaced2" path="res://SCENE/UNIT/unit.tscn" id="1_4vd0x"]
+[ext_resource type="Script" uid="uid://b6ie772hfnnhc" path="res://SCENE/PLAYERS/player.gd" id="2_usmil"]
+[ext_resource type="Resource" uid="uid://ck72ryvqsxacn" path="res://RESOURCES/UNITS/Players/stats_player_well_rounded.tres" id="3_0v20d"]
+[ext_resource type="Script" uid="uid://rgq015qdcdv4" path="res://SCENE/PLAYERS/trail.gd" id="4_2v411"]
+
+[sub_resource type="Curve" id="Curve_0v20d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0v20d"]
+radius = 18.1108
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2v411"]
+radius = 26.4764
+
+[node name="PlayerWellRounder" groups=["Player"] instance=ExtResource("1_4vd0x")]
+collision_mask = 2
+script = ExtResource("2_usmil")
+dash_duration = 0.3
+dash_speed_multiplier = 4
+dash_cooldown = 3
+stats = ExtResource("3_0v20d")
+
+[node name="Trail" type="Line2D" parent="Visuals" index="0" node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+top_level = true
+position = Vector2(0, -32)
+width = 50.0
+width_curve = SubResource("Curve_0v20d")
+default_color = Color(0.905882, 0.87451, 1, 0.588235)
+script = ExtResource("4_2v411")
+player = NodePath("../..")
+trail_duration = 0.5
+
+[node name="sprite" parent="Visuals" index="2"]
+z_index = 1
+
+[node name="CollisionShape2D" parent="." index="1"]
+z_index = 1
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_0v20d")
+debug_color = Color(3.56168e-06, 0.517042, 0.673356, 0.772549)
+
+[node name="DashTimer" type="Timer" parent="." index="3"]
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="TrailTimer" type="Timer" parent="." index="5"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="HurtBoxComponents" parent="." index="6"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponents" index="0"]
+z_index = 1
+position = Vector2(1, -27)
+shape = SubResource("CircleShape2D_2v411")
+debug_color = Color(1, 0.565041, 0.751434, 0.698039)
+
+[node name="HealthBar" parent="." index="8"]
+back_color = Color(0.137255, 0.0196078, 0.027451, 1)
+fill_color = Color(1, 0.290196, 0.454902, 1)
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="TrailTimer" to="Visuals/Trail" method="_on_trail_timer_timeout"]
