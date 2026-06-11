@@ -13,7 +13,9 @@ class_name Player
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var weapon_container: WeaponContainer = $WeaponContainer
 
+var current_weapons: Array[Weapon] = []
 
 
 var move_direction: Vector2
@@ -26,6 +28,8 @@ func _ready() -> void:
 	super.ready()
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
+	
+	add_weapon(preload("res://RESOURCES/Items/Weapons/melee/punch/item_punch_1.tres"))
 
 func _process(delta: float) -> void:
 	move_direction = Input.get_vector("move_left", "move_right","move_up","move_down")
@@ -44,6 +48,16 @@ func _process(delta: float) -> void:
 		start_dash()
 	update_animations()
 	update_rotation()
+
+
+func add_weapon(data: ItemWeapon) -> void:
+	var weapon = data.scene.instantiate() as Weapon
+	add_child(weapon)
+	
+	weapon.setup_weapon(data)
+	current_weapons.append(weapon)
+	weapon_container.update_weapons_position(current_weapons)
+	
 
 
 func update_animations():
@@ -76,6 +90,9 @@ func can_dash () -> bool:
 	Input.is_action_just_pressed("dash") and\
 	move_direction != Vector2.ZERO
 
+
+func is_facing_right() -> bool:
+	return visuals.scale.x == -0.5
 
 
 func _on_dash_timer_timeout() -> void:
