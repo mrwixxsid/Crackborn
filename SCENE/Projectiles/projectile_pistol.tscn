@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgbkdnspnjevi"]
+
+[ext_resource type="Texture2D" uid="uid://45dwbyxmy4wd" path="res://assets/sprites/Projectiles/Projectile_2.png" id="1_7cx5y"]
+[ext_resource type="Script" uid="uid://dtfs7hbam4kg2" path="res://SCENE/Projectiles/projectil.gd" id="1_qaox7"]
+[ext_resource type="PackedScene" uid="uid://dq2hli1ii5oew" path="res://SCENE/Components/hit_box_component.tscn" id="1_xf7rb"]
+[ext_resource type="Shader" uid="uid://byk1qipdpiqkb" path="res://SCENE/Projectiles/projectile_pistol.gdshader" id="2_nlwoa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkt7j"]
+shader = ExtResource("2_nlwoa")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qaox7"]
+radius = 43.3333
+
+[node name="Projectile_Pistol" type="Node2D" node_paths=PackedStringArray("HitBox")]
+script = ExtResource("1_qaox7")
+HitBox = NodePath("Sprite2D/HitBoxComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mkt7j")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_7cx5y")
+
+[node name="HitBoxComponent" parent="Sprite2D" instance=ExtResource("1_xf7rb")]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBoxComponent"]
+shape = SubResource("CircleShape2D_qaox7")
+debug_color = Color(0.485144, 0.580216, 0.237289, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="on_hit_hurtbox" from="Sprite2D/HitBoxComponent" to="." method="_on_hit_box_component_on_hit_hurtbox"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

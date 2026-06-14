@@ -10,10 +10,10 @@
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_f8r1u")
 player = NodePath("PlayerWellRounder")
-normal_color = Color(0.983764, 0.871499, 1, 1)
-blocked_color = Color(1, 0.626719, 0.934551, 1)
-critical_color = Color(0.908265, 0, 0.289913, 1)
-hp_color = Color(2.69532e-06, 0.75882, 0.570417, 1)
+normal_color = Color(0.929397, 0.729271, 0.915728, 1)
+blocked_color = Color(1, 0.175983, 0.677695, 1)
+critical_color = Color(0.838803, 0, 0.317014, 1)
+hp_color = Color(0, 0.66352, 0.557139, 1)
 
 [node name="Black_Background" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -33,10 +33,7 @@ limit_bottom = 600
 script = ExtResource("4_loeep")
 
 [node name="EnemyChaserSlow" parent="." instance=ExtResource("6_hjffh")]
-position = Vector2(-343, -327)
+position = Vector2(562, 132)
 
-[node name="EnemyChaserSlow2" parent="." instance=ExtResource("6_hjffh")]
-position = Vector2(826, 209)
-
-[node name="EnemyChaserSlow3" parent="." instance=ExtResource("6_hjffh")]
-position = Vector2(702, -353)
+[node name="EnemyChaserSlow4" parent="." instance=ExtResource("6_hjffh")]
+position = Vector2(261, 219)

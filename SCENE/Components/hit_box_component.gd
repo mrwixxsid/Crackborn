@@ -4,7 +4,7 @@ class_name HitBoxComponents
 signal on_hit_hurtbox(hurtbox: HurtBoxComponents)
 
 
-var damage = 1.0
+var damage = 1
 var critical = false
 var knock_back_power = 0.0
 var source: Node2D

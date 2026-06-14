@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=3 format=3 uid="uid://h3ap54gtan3g"]
+
+[ext_resource type="PackedScene" uid="uid://cc2wemc6ehj4c" path="res://SCENE/Projectiles/projectile_laser.tscn" id="1_ux86a"]
+[ext_resource type="Script" uid="uid://kgnsd3qcu4eb" path="res://RESOURCES/Items/Weapons/weapon_stats.gd" id="2_52p2t"]
+
+[resource]
+script = ExtResource("2_52p2t")
+damage = 21.0
+accuracy = 0.9
+cooldown = 0.7
+crit_chance = 2.0
+crit_damage = 3.0
+max_range = 340.0
+knockback = 0.0
+life_steal = 0.0
+recoil = 1.0
+recoil_duration = 0.1
+attack_duration = 0.3
+back_duration = 0.15
+projectile_scene = ExtResource("1_ux86a")
+projectile_speed = 2000.0
+metadata/_custom_type_script = "uid://kgnsd3qcu4eb"

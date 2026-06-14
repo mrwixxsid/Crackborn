@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhejowxrd7gff"]
+
+[ext_resource type="PackedScene" uid="uid://cpeqfu0xery5a" path="res://SCENE/Weapon/weapon_base.tscn" id="1_tqit1"]
+[ext_resource type="PackedScene" uid="uid://dq2hli1ii5oew" path="res://SCENE/Components/hit_box_component.tscn" id="2_abl7a"]
+[ext_resource type="Texture2D" uid="uid://b77qpudth0kah" path="res://assets/sprites/Weapons/Melee/Weapon_wand.png" id="2_s8yby"]
+[ext_resource type="Script" uid="uid://bubei803eqpm7" path="res://SCENE/Weapon/melee/melee_behavior.gd" id="3_xrvxm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8mkj"]
+size = Vector2(182.857, 80)
+
+[node name="Weapon_wand" instance=ExtResource("1_tqit1")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(34.2857, 0)
+texture = ExtResource("2_s8yby")
+
+[node name="HitBoxComponent" parent="Sprite2D" index="0" instance=ExtResource("2_abl7a")]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBoxComponent" index="0"]
+position = Vector2(-8.17435e-06, -5.71429)
+shape = SubResource("RectangleShape2D_n8mkj")
+
+[node name="WeaponBehavior" parent="." index="3" node_paths=PackedStringArray("hitbox", "weapon")]
+script = ExtResource("3_xrvxm")
+hitbox = NodePath("../Sprite2D/HitBoxComponent")
+weapon = NodePath("..")

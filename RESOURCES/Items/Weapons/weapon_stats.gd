@@ -9,7 +9,7 @@ class_name WeaponStats
 @export var max_range = 150.0
 @export var  knockback = 0.0
 @export_range(0.0, 1.0) var life_steal = 0.0
-@export var recoin = 25.0
+@export var recoil = 25.0
 @export_range(0.1, 3.0) var recoil_duration = 0.1
 @export_range(0.1, 3.0) var attack_duration = 0.3
 @export_range(0.1, 3.0) var back_duration = 0.15

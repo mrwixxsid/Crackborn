@@ -12,7 +12,7 @@ class_name UNIT
 
 
 
-func ready():
+func _ready():
 	health_components.setup(stats)
 
 
@@ -29,6 +29,8 @@ func _on_hurt_box_components_on_damage(hitbox: HitBoxComponents) -> void:
 		Global.on_create_block_text.emit(self)
 		print("Blocked!")
 		return
+	
+	
 	
 	set_flash_material()
 	Global.on_create_damage_text.emit(self, hitbox)

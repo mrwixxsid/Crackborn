@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://b6vh1oewcqsy6" path="res://SCENE/Weapon/weapon.gd" id="1_b7lio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkla2"]
-radius = 150.0
+radius = 160.0
 
 [node name="WeaponBase" type="Node2D"]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_b7lio")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

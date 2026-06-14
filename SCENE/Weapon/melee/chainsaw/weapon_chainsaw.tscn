@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://canwi8gg1msec"]
+
+[ext_resource type="PackedScene" uid="uid://cpeqfu0xery5a" path="res://SCENE/Weapon/weapon_base.tscn" id="1_rhwt1"]
+[ext_resource type="Texture2D" uid="uid://drfv6bmlj32fk" path="res://assets/sprites/Weapons/Melee/Weapon_chainsaw.png" id="2_jt4k7"]
+[ext_resource type="PackedScene" uid="uid://dq2hli1ii5oew" path="res://SCENE/Components/hit_box_component.tscn" id="3_0hrqv"]
+[ext_resource type="Script" uid="uid://bubei803eqpm7" path="res://SCENE/Weapon/melee/melee_behavior.gd" id="4_mwqk1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwqk1"]
+size = Vector2(160, 80)
+
+[node name="Weapon_chainsaw" instance=ExtResource("1_rhwt1")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(34.2857, -5.71429)
+texture = ExtResource("2_jt4k7")
+
+[node name="HitBoxComponent" parent="Sprite2D" index="0" instance=ExtResource("3_0hrqv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBoxComponent" index="0"]
+position = Vector2(1.08991e-05, 5.71429)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_mwqk1")
+debug_color = Color(0.569614, 0.403444, 0.970715, 0.42)
+
+[node name="WeaponBehavior" parent="." index="3" node_paths=PackedStringArray("hitbox", "weapon")]
+script = ExtResource("4_mwqk1")
+hitbox = NodePath("../Sprite2D/HitBoxComponent")
+weapon = NodePath("..")

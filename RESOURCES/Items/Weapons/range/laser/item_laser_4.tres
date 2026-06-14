@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemWeapon" load_steps=5 format=3 uid="uid://b7drybxfxcpip"]
+
+[ext_resource type="Texture2D" uid="uid://qaqog72vwsaf" path="res://assets/sprites/Weapons/Icons/weapon_laser_icon.png" id="1_heqqr"]
+[ext_resource type="PackedScene" uid="uid://1nc8k54f0lcl" path="res://SCENE/Weapon/range/weapon_laser.tscn" id="2_cobff"]
+[ext_resource type="Script" uid="uid://djjqvtib4ho2x" path="res://RESOURCES/Items/Weapons/item_weapon.gd" id="3_yffs7"]
+[ext_resource type="Resource" uid="uid://cb8l8fpr5kofn" path="res://RESOURCES/Items/Weapons/range/laser/stat_laser_4.tres" id="4_heqqr"]
+
+[resource]
+script = ExtResource("3_yffs7")
+type = 1
+scene = ExtResource("2_cobff")
+stats = ExtResource("4_heqqr")
+item_name = "Laser IV"
+item_icon = ExtResource("1_heqqr")
+item_tier = 3
+item_type = 0
+item_cost = 260
+metadata/_custom_type_script = "uid://djjqvtib4ho2x"

@@ -20,6 +20,11 @@ func setup(stats: UnitStats):
 
 
 func take_damage(value: float):
+	
+	##DEBUG
+	print("HP before:", current_health)
+	print("Damage:", value)
+	
 	if current_health <= 0:
 		return
 	current_health -= value
@@ -32,8 +37,12 @@ func take_damage(value: float):
 		current_health = 0
 		on_unit_died.emit()
 		die()
+	
+	#DEBUG
+	print("HP after:", current_health)
 
 
+	
 func heal(amount: float):
 	if current_health <= 0:
 		return

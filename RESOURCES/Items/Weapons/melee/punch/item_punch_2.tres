@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://ddqb5vq13xafs" path="res://assets/sprites/Weapons/Icons/weapon_punch_icon.png" id="1_8pwbj"]
 [ext_resource type="Script" uid="uid://djjqvtib4ho2x" path="res://RESOURCES/Items/Weapons/item_weapon.gd" id="2_q5cji"]
-[ext_resource type="PackedScene" uid="uid://73cd3mxynufo" path="res://SCENE/Weapon/melee/weapon_punch.tscn" id="2_qfq12"]
+[ext_resource type="PackedScene" uid="uid://r6b33uflyvy3" path="res://SCENE/Weapon/melee/axe/weapon_axe.tscn" id="2_qfq12"]
 [ext_resource type="Resource" uid="uid://7n3qkuvdhsh4" path="res://RESOURCES/Items/Weapons/melee/punch/stats_punch_2.tres" id="3_q5cji"]
 [ext_resource type="Resource" uid="uid://y0o0c3j2yfwp" path="res://RESOURCES/Items/Weapons/melee/punch/item_punch_3.tres" id="4_qfq12"]
 
 [resource]
 script = ExtResource("2_q5cji")
-tupe = 0
+type = 0
 scene = ExtResource("2_qfq12")
 stats = ExtResource("3_q5cji")
 upgrade_to = ExtResource("4_qfq12")

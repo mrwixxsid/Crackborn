@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://d365s2nkjse67"]
+
+[ext_resource type="Script" uid="uid://kgnsd3qcu4eb" path="res://RESOURCES/Items/Weapons/weapon_stats.gd" id="1_6rb1k"]
+
+[resource]
+script = ExtResource("1_6rb1k")
+damage = 6.0
+accuracy = 0.9
+cooldown = 0.7
+crit_chance = 0.207
+crit_damage = 2.0
+max_range = 190.0
+knockback = 0.2
+life_steal = 0.0
+recoil = 25.0
+recoil_duration = 0.1
+attack_duration = 0.3
+back_duration = 0.15
+projectile_speed = 1600.0
+metadata/_custom_type_script = "uid://kgnsd3qcu4eb"

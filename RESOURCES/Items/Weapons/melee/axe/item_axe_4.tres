@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemWeapon" load_steps=5 format=3 uid="uid://b1svj6f85alif"]
+
+[ext_resource type="Texture2D" uid="uid://c3bmk785egrpk" path="res://assets/sprites/Weapons/Icons/weapon_axe_icon.png" id="1_m8i7c"]
+[ext_resource type="Script" uid="uid://djjqvtib4ho2x" path="res://RESOURCES/Items/Weapons/item_weapon.gd" id="2_lwk5x"]
+[ext_resource type="PackedScene" uid="uid://r6b33uflyvy3" path="res://SCENE/Weapon/melee/axe/weapon_axe.tscn" id="2_mj77b"]
+[ext_resource type="Resource" uid="uid://d4lsvb8a7ypck" path="res://RESOURCES/Items/Weapons/melee/axe/stat_axe_4.tres" id="3_lwk5x"]
+
+[resource]
+script = ExtResource("2_lwk5x")
+type = 0
+scene = ExtResource("2_mj77b")
+stats = ExtResource("3_lwk5x")
+item_name = "Axe IV"
+item_icon = ExtResource("1_m8i7c")
+item_tier = 3
+item_type = 0
+item_cost = 200
+metadata/_custom_type_script = "uid://djjqvtib4ho2x"

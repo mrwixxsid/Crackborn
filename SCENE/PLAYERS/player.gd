@@ -25,12 +25,15 @@ var dash_available: bool = true
 
 
 func _ready() -> void:
-	super.ready()
+	super._ready()
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
 	
-	add_weapon(preload("res://RESOURCES/Items/Weapons/melee/punch/item_punch_1.tres"))
-
+	#add_weapon(preload("res://RESOURCES/Items/Weapons/melee/punch/item_punch_1.tres"))
+	add_weapon(preload("res://RESOURCES/Items/Weapons/range/laser/item_laser_4.tres"))
+	
+	
+	
 func _process(delta: float) -> void:
 	move_direction = Input.get_vector("move_left", "move_right","move_up","move_down")
 	

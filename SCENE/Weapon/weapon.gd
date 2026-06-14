@@ -5,6 +5,7 @@ class_name Weapon
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision: CollisionShape2D = %CollisionShape2D
 @onready var cooldown_timer: Timer = $CooldownTimer
+@onready var weapon_behavior: WeaponBehavior = $WeaponBehavior
 
 
 var data: ItemWeapon
@@ -24,6 +25,11 @@ func _process(delta: float) -> void:
 		else:
 			closest_target = null
 	rotate_to_target()
+	update_visuals()
+	
+	
+	if can_use_weapon():
+		use_weapon()
 	
 	
 func setup_weapon(data: ItemWeapon):
@@ -33,6 +39,9 @@ func setup_weapon(data: ItemWeapon):
 
 func use_weapon():
 	calculate_spread()
+	weapon_behavior.execute_attack()
+	cooldown_timer.wait_time = data.stats.cooldown
+	cooldown_timer.start()
 
 
 func rotate_to_target():
@@ -76,6 +85,15 @@ func get_idle_rotation() -> float:
 		return 0
 	else:
 		return PI
+
+
+func update_visuals():
+	if abs(rotation) > PI / 2:
+		sprite.scale.y = -0.5
+	else :
+		sprite.scale.y = 0.5
+		
+		
 		
 func calculate_spread():
 	weapon_spread += randf_range(-1 + data.stats.accuracy, 1 - data.stats.accuracy)

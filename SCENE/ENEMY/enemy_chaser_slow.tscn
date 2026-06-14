@@ -62,3 +62,9 @@ debug_color = Color(0, 0.537746, 0.965973, 0.42)
 [node name="HealthBar" parent="." index="7"]
 back_color = Color(0.0407784, 0, 0.347632, 1)
 fill_color = Color(0.974801, 0.9508, 0.460796, 1)
+
+[node name="KnockBackTimer" type="Timer" parent="." index="9"]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="KnockBackTimer" to="." method="_on_knock_back_timer_timeout"]
