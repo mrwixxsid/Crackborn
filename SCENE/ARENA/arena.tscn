@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ov4fmsbglo55" path="res://assets/sprites/Map.png" id="2_oowxy"]
 [ext_resource type="PackedScene" uid="uid://bjrayavoijn8f" path="res://SCENE/PLAYERS/player_well_rounder.tscn" id="3_btu13"]
 [ext_resource type="Script" uid="uid://t6h7dcijwc2e" path="res://SCENE/PLAYERS/camera.gd" id="4_loeep"]
-[ext_resource type="PackedScene" uid="uid://bj530aifitpw1" path="res://SCENE/ENEMY/enemy_chaser_slow.tscn" id="6_hjffh"]
+[ext_resource type="PackedScene" uid="uid://udwt564n2qcp" path="res://SCENE/ENEMY/enemy_shooter.tscn" id="6_hjffh"]
 
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_f8r1u")
@@ -32,8 +32,5 @@ limit_right = 1200
 limit_bottom = 600
 script = ExtResource("4_loeep")
 
-[node name="EnemyChaserSlow" parent="." instance=ExtResource("6_hjffh")]
-position = Vector2(562, 132)
-
-[node name="EnemyChaserSlow4" parent="." instance=ExtResource("6_hjffh")]
-position = Vector2(261, 219)
+[node name="EnemyShooter" parent="." instance=ExtResource("6_hjffh")]
+position = Vector2(813, 67)

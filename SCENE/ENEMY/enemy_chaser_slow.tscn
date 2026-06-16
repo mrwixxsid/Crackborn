@@ -13,10 +13,10 @@ radius = 16.0
 radius = 150.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wppdf"]
-radius = 31.0161
+radius = 37.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2wwa1"]
-radius = 25.02
+radius = 33.0151
 
 [node name="EnemyChaserSlow" instance=ExtResource("1_dkwwj")]
 collision_layer = 2

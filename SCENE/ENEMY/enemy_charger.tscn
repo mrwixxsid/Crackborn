@@ -1,11 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://x61k4htk2kbc"]
+[gd_scene load_steps=8 format=3 uid="uid://x61k4htk2kbc"]
 
 [ext_resource type="PackedScene" uid="uid://bj530aifitpw1" path="res://SCENE/ENEMY/enemy_chaser_slow.tscn" id="1_kjx0b"]
 [ext_resource type="Resource" uid="uid://csflmaby281kr" path="res://RESOURCES/UNITS/Enemy/stats_enemy_charger.tres" id="2_cn8a1"]
 [ext_resource type="Texture2D" uid="uid://emsi6ifyt0vf" path="res://assets/sprites/Enemies/Enemy_5.png" id="2_ktb1j"]
+[ext_resource type="Script" uid="uid://byexyw5pxx6no" path="res://SCENE/ENEMY/charge_behavior.gd" id="4_cn8a1"]
+
+[sub_resource type="Animation" id="Animation_cn8a1"]
+resource_name = "charge"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.835294, 0.109804, 0.223529, 1), Color(1, 1, 1, 1), Color(0.835294, 0.109804, 0.223529, 1), Color(1, 1, 1, 1), Color(0.835294, 0.109804, 0.223529, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rewjp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7k7sm"]
+_data = {
+&"RESET": SubResource("Animation_rewjp"),
+&"charge": SubResource("Animation_cn8a1")
+}
 
 [node name="EnemyCharger" instance=ExtResource("1_kjx0b")]
 stats = ExtResource("2_cn8a1")
 
 [node name="sprite" parent="Visuals" index="1"]
 texture = ExtResource("2_ktb1j")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="VisionArea" parent="." index="3"]
+visible = false
+
+[node name="HurtBoxComponents" parent="." index="4"]
+visible = false
+
+[node name="HitBoxComponent" parent="." index="5"]
+visible = false
+
+[node name="Charge_Behavior" type="Node2D" parent="." index="10" node_paths=PackedStringArray("enemy", "anim_effect")]
+script = ExtResource("4_cn8a1")
+enemy = NodePath("..")
+anim_effect = NodePath("../AnimationEffects")
+
+[node name="AnimationEffects" type="AnimationPlayer" parent="." index="11"]
+libraries = {
+&"": SubResource("AnimationLibrary_7k7sm")
+}

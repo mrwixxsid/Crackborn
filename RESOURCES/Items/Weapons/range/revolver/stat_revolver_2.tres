@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=3 format=3 uid="uid://bvje0bkxw65ps"]
+
+[ext_resource type="PackedScene" uid="uid://3fv13qtshe7a" path="res://SCENE/Projectiles/projectile_revolver.tscn" id="1_pvlxp"]
+[ext_resource type="Script" uid="uid://kgnsd3qcu4eb" path="res://RESOURCES/Items/Weapons/weapon_stats.gd" id="2_x42tl"]
+
+[resource]
+script = ExtResource("2_x42tl")
+damage = 9.0
+accuracy = 0.9
+cooldown = 0.9
+crit_chance = 0.05
+crit_damage = 1.5
+max_range = 200.0
+knockback = 2.0
+life_steal = 0.0
+recoil = 25.0
+recoil_duration = 0.1
+attack_duration = 0.3
+back_duration = 0.15
+projectile_scene = ExtResource("1_pvlxp")
+projectile_speed = 1700.0
+metadata/_custom_type_script = "uid://kgnsd3qcu4eb"

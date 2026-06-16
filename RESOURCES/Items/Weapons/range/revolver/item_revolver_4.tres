@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemWeapon" load_steps=5 format=3 uid="uid://d04jya8e0mqrb"]
+
+[ext_resource type="Texture2D" uid="uid://bfo3prmsd45y2" path="res://assets/sprites/Weapons/Icons/weapon_revolver_icon.png" id="1_b7fb2"]
+[ext_resource type="PackedScene" uid="uid://kmwkbxnvf5fv" path="res://SCENE/Weapon/range/weapon_revolver.tscn" id="2_53o7g"]
+[ext_resource type="Script" uid="uid://djjqvtib4ho2x" path="res://RESOURCES/Items/Weapons/item_weapon.gd" id="3_646yc"]
+[ext_resource type="Resource" uid="uid://cupxq44a5n8jd" path="res://RESOURCES/Items/Weapons/range/revolver/stat_revolver_4.tres" id="4_53o7g"]
+
+[resource]
+script = ExtResource("3_646yc")
+type = 1
+scene = ExtResource("2_53o7g")
+stats = ExtResource("4_53o7g")
+item_name = "Revolver IV"
+item_icon = ExtResource("1_b7fb2")
+item_tier = 3
+item_type = 0
+item_cost = 160
+metadata/_custom_type_script = "uid://djjqvtib4ho2x"

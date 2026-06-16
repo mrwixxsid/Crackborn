@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemWeapon" load_steps=6 format=3 uid="uid://cwcquo436klv8"]
+
+[ext_resource type="Texture2D" uid="uid://bc8nry6016y7b" path="res://assets/sprites/Weapons/Icons/weapon_shotgun_icon.png" id="1_aqofy"]
+[ext_resource type="PackedScene" uid="uid://c63d6mhgr7lxm" path="res://SCENE/Weapon/range/weapon_shotgun.tscn" id="2_edypb"]
+[ext_resource type="Script" uid="uid://djjqvtib4ho2x" path="res://RESOURCES/Items/Weapons/item_weapon.gd" id="3_dkag2"]
+[ext_resource type="Resource" uid="uid://hxssmpptwjjx" path="res://RESOURCES/Items/Weapons/range/shotgun/stat_shotgun_3.tres" id="4_dkag2"]
+[ext_resource type="Resource" uid="uid://ctjnnfqtdyyy0" path="res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_4.tres" id="4_edypb"]
+
+[resource]
+script = ExtResource("3_dkag2")
+type = 1
+scene = ExtResource("2_edypb")
+stats = ExtResource("4_dkag2")
+upgrade_to = ExtResource("4_edypb")
+item_name = "Shotgun III"
+item_icon = ExtResource("1_aqofy")
+item_tier = 2
+item_type = 0
+item_cost = 101
+metadata/_custom_type_script = "uid://djjqvtib4ho2x"
