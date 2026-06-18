@@ -19,6 +19,10 @@ func _ready() -> void:
 	attack_start_pos = sprite.position
 	
 func _process(delta: float) -> void:
+	
+	## Pause game activities
+	if Global.game_paused: return
+	
 	if not is_attacking:
 		if targets.size() > 0:
 			update_closest_target()

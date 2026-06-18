@@ -9,11 +9,28 @@ class_name Arena
 @export var critical_color: Color
 @export var hp_color: Color 
 
+
+## Game UI
+@onready var wave_index_label: Label = %WaveIndexLabel
+@onready var wave_time_lable: Label = %WaveTimeLable
+
+## Spawner
+@onready var spawner: Spawner = $Spawner
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.player = player
 	Global.on_create_block_text.connect(_on_create_block_text)
 	Global.on_create_damage_text.connect(_on_create_damage_text)
+	
+
+
+func _process(delta: float) -> void:
+	if Global.game_paused: return
+	wave_index_label.text = spawner.get_wave_text()
+	wave_time_lable.text = spawner.get_wave_timer_text()
 	
 
 

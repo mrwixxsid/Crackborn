@@ -29,13 +29,17 @@ func _ready() -> void:
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
 	
-	#add_weapon(preload("res://RESOURCES/Items/Weapons/melee/punch/item_punch_1.tres"))
-	#add_weapon(preload("res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_1.tres"))
+	add_weapon(preload("res://RESOURCES/Items/Weapons/melee/punch/item_punch_1.tres"))
+	add_weapon(preload("res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_1.tres"))
 
 	
 	
 	
 func _process(delta: float) -> void:
+	
+	## Pause game activities
+	if Global.game_paused: return
+	
 	move_direction = Input.get_vector("move_left", "move_right","move_up","move_down")
 	
 	var current_velocity = move_direction * stats.speed

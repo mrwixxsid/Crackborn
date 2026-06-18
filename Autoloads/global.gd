@@ -17,13 +17,13 @@ enum UpgradeTier{
 
 
 var player: Player
+var game_paused = false
 
-
+func get_chance_success(chance: float) -> bool:
+	var random = randf_range(0,1.0)
+	if random < chance:
+		return true
+	return false
 #func get_chance_success(chance):
-	#var random = randf_range(0,1)
-	#if random > chance:
-		#return true
-	#return false
-func get_chance_success(chance):
-	var random = randf()
-	return random < chance
+	#var random = randf()
+	#return random < chance

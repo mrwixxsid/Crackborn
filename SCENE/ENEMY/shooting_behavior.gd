@@ -18,6 +18,10 @@ func _ready() -> void:
 	
 	
 func _process(delta: float) -> void:
+	
+	## Pause game activities
+	if Global.game_paused: return
+	
 	if enemy == null:
 		return
 	
