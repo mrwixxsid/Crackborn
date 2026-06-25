@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WaveData" load_steps=9 format=3 uid="uid://de756p5e716j0"]
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://de756p5e716j0"]
 
 [ext_resource type="Script" uid="uid://bctf0tx1nnhq8" path="res://RESOURCES/Waves/wave_data.gd" id="1_4r57o"]
 [ext_resource type="Script" uid="uid://b14tgw5fl17mn" path="res://RESOURCES/Waves/wave_unit.gd" id="2_cikh0"]
@@ -28,10 +28,8 @@ metadata/_custom_type_script = "uid://b14tgw5fl17mn"
 script = ExtResource("1_4r57o")
 from = 1
 to = 5
-wave_time = 25
+wave_time = 5
 units = Array[ExtResource("2_cikh0")]([SubResource("Resource_kx3iu"), SubResource("Resource_tqy2s"), SubResource("Resource_f1w5t")])
-spawn_type = 1
-fixed_spawn_time = 1.0
 min_spawn_time = 0.5
 max_spawn_time = 2.0
 metadata/_custom_type_script = "uid://bctf0tx1nnhq8"

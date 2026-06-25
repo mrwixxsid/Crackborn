@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemUpgrade" load_steps=3 format=3 uid="uid://cpl2e8qkavoaa"]
+
+[ext_resource type="Texture2D" uid="uid://3r5bqdm7r45u" path="res://assets/sprites/Upgrades/4.png" id="1_mab2v"]
+[ext_resource type="Script" uid="uid://dbqgyntc3sb1d" path="res://RESOURCES/Upgrades/item_upgrade.gd" id="2_qh5fc"]
+
+[resource]
+script = ExtResource("2_qh5fc")
+value = 2.0
+description = "+2"
+stat_id = "hervesting"
+item_name = "Hervesting II"
+item_icon = ExtResource("1_mab2v")
+item_tier = 0
+item_type = 1
+item_cost = 0
+metadata/_custom_type_script = "uid://dbqgyntc3sb1d"

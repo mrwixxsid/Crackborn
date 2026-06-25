@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemPassives" format=3 uid="uid://ib4tbcbwh5lo"]
+
+[ext_resource type="Script" uid="uid://diuq8euw0fa0o" path="res://RESOURCES/Items/Passives/item_passives.gd" id="1_k17pg"]
+[ext_resource type="Texture2D" uid="uid://benji2577h1yb" path="res://assets/sprites/Projectiles/10.png" id="1_xnssu"]
+
+[resource]
+script = ExtResource("1_k17pg")
+add_value = 15.0
+add_stats = "luck"
+item_name = "Mighty Sword"
+item_icon = ExtResource("1_xnssu")
+item_tier = 2
+item_type = 2
+item_cost = 120
+metadata/_custom_type_script = "uid://diuq8euw0fa0o"

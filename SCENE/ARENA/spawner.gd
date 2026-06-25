@@ -2,6 +2,8 @@ extends Node2D
 class_name Spawner
 
 
+signal on_wave_completed
+
 @export var spawn_area_size = Vector2(1000, 500)
 @export var waves_data: Array[WaveData]
 @export var enemy_collection: Array[UnitStats]   ## Every time we complete a new wave, we need to update our enemies, damage and also increse health
@@ -17,8 +19,6 @@ var spawnd_enemies: Array[Enemy] = []
 
 
 
-func _ready() -> void:
-	start_wave()
 
 
 
@@ -108,6 +108,8 @@ func _on_spawn_timer_timeout() -> void:
 
 func _on_wave_timer_timeout() -> void:
 	Global.game_paused = true
+	Global.get_harvesting_coin()
+	on_wave_completed.emit()
 	spawn_timer.stop()
 	clear_enemies()
 	update_enemies_new_wave()

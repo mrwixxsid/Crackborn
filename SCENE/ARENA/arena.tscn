@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://u24xpvwhroph"]
+[gd_scene format=3 uid="uid://u24xpvwhroph"]
 
 [ext_resource type="Script" uid="uid://bammbxqgyonod" path="res://SCENE/ARENA/arena.gd" id="1_f8r1u"]
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_vaq4d"]
 [ext_resource type="Texture2D" uid="uid://ov4fmsbglo55" path="res://assets/sprites/Map.png" id="2_oowxy"]
 [ext_resource type="PackedScene" uid="uid://bjrayavoijn8f" path="res://SCENE/PLAYERS/player_well_rounder.tscn" id="3_btu13"]
 [ext_resource type="Script" uid="uid://t6h7dcijwc2e" path="res://SCENE/PLAYERS/camera.gd" id="4_loeep"]
-[ext_resource type="PackedScene" uid="uid://udwt564n2qcp" path="res://SCENE/ENEMY/enemy_shooter.tscn" id="6_hjffh"]
 [ext_resource type="Script" uid="uid://dp4eodamnhpvk" path="res://SCENE/ARENA/spawner.gd" id="7_ung8t"]
 [ext_resource type="Script" uid="uid://bctf0tx1nnhq8" path="res://RESOURCES/Waves/wave_data.gd" id="8_0khi8"]
 [ext_resource type="Resource" uid="uid://de756p5e716j0" path="res://RESOURCES/Waves/Data/wave_1_to_5.tres" id="8_pqwet"]
-[ext_resource type="PackedScene" uid="uid://clhvyfwyfy7lo" path="res://SCENE/UI/stats_container/stats_container.tscn" id="10_ac255"]
+[ext_resource type="PackedScene" uid="uid://duo1tocp6ghhq" path="res://SCENE/UI/coins_bar/coins_bar.tscn" id="10_a8rx6"]
+[ext_resource type="PackedScene" uid="uid://dxy4s1rldj1r" path="res://SCENE/UI/upgrade_panel/upgrade_panel.tscn" id="10_ac255"]
+[ext_resource type="PackedScene" uid="uid://c3v4moa8pgijd" path="res://SCENE/UI/shop_panel/shop_panel.tscn" id="11_yx0t2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pqwet"]
 font_size = 64
@@ -17,7 +18,7 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_0khi8"]
 font_size = 64
 
-[node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Arena" type="Node2D" unique_id=235341757 node_paths=PackedStringArray("player")]
 script = ExtResource("1_f8r1u")
 player = NodePath("PlayerWellRounder")
 normal_color = Color(0.921115, 0.902041, 1, 1)
@@ -25,39 +26,39 @@ blocked_color = Color(1, 0.463442, 0.744406, 1)
 critical_color = Color(0.946686, 0.887256, 0.522332, 1)
 hp_color = Color(0, 0.66352, 0.557139, 1)
 
-[node name="Black_Background" type="Sprite2D" parent="."]
+[node name="Black_Background" type="Sprite2D" parent="." unique_id=443680215]
 scale = Vector2(2, 2)
 texture = ExtResource("1_vaq4d")
 
-[node name="Grass_Background" type="Sprite2D" parent="."]
+[node name="Grass_Background" type="Sprite2D" parent="." unique_id=1208049771]
 scale = Vector2(2, 2)
 texture = ExtResource("2_oowxy")
 
-[node name="PlayerWellRounder" parent="." instance=ExtResource("3_btu13")]
+[node name="PlayerWellRounder" parent="." unique_id=1736939731 instance=ExtResource("3_btu13")]
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="." unique_id=1759633261]
 limit_left = -1200
 limit_top = -600
 limit_right = 1200
 limit_bottom = 600
 script = ExtResource("4_loeep")
 
-[node name="EnemyShooter" parent="." instance=ExtResource("6_hjffh")]
-position = Vector2(813, 67)
-
-[node name="Spawner" type="Node2D" parent="."]
+[node name="Spawner" type="Node2D" parent="." unique_id=1422391705]
 script = ExtResource("7_ung8t")
 waves_data = Array[ExtResource("8_0khi8")]([ExtResource("8_pqwet")])
 
-[node name="SpawnTimer" type="Timer" parent="Spawner"]
+[node name="SpawnTimer" type="Timer" parent="Spawner" unique_id=1052930140]
 one_shot = true
 
-[node name="WaveTimer" type="Timer" parent="Spawner"]
+[node name="WaveTimer" type="Timer" parent="Spawner" unique_id=105910089]
 one_shot = true
 
-[node name="GameUI" type="CanvasLayer" parent="."]
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=152537307]
 
-[node name="WaveIndexLabel" type="Label" parent="GameUI"]
+[node name="CoinsBar" parent="GameUI" unique_id=795473016 instance=ExtResource("10_a8rx6")]
+unique_name_in_owner = true
+
+[node name="WaveIndexLabel" type="Label" parent="GameUI" unique_id=442346430]
 unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
@@ -70,7 +71,7 @@ grow_horizontal = 2
 text = "Wave 1"
 label_settings = SubResource("LabelSettings_pqwet")
 
-[node name="WaveTimeLable" type="Label" parent="GameUI"]
+[node name="WaveTimeLable" type="Label" parent="GameUI" unique_id=1582088429]
 unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
@@ -83,7 +84,15 @@ grow_horizontal = 2
 text = "20"
 label_settings = SubResource("LabelSettings_0khi8")
 
-[node name="StatsContainer" parent="GameUI" instance=ExtResource("10_ac255")]
+[node name="Upgrade_Panel" parent="GameUI" unique_id=788000511 instance=ExtResource("10_ac255")]
+unique_name_in_owner = true
+visible = false
 
+[node name="ShopPanel" parent="GameUI" unique_id=1120469131 instance=ExtResource("11_yx0t2")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="on_wave_completed" from="Spawner" to="." method="_on_spawner_on_wave_completed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Spawner/WaveTimer" to="Spawner" method="_on_wave_timer_timeout"]
+[connection signal="shop_next_wave" from="GameUI/ShopPanel" to="." method="_on_shop_panel_shop_next_wave"]

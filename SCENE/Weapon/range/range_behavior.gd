@@ -15,7 +15,7 @@ func execute_attack():
 	var attack_pos = Vector2(weapon.attack_start_pos.x - weapon.data.stats.recoil, weapon.attack_start_pos.y)
 	tween.tween_property(weapon.sprite, "position", attack_pos, weapon.data.stats.recoil_duration)
 	tween.tween_property(weapon.sprite,"position", weapon.attack_start_pos,weapon.data.stats.recoil_duration)
-	
+	apply_life_steal()
 	
 	await tween.finished
 	weapon.is_attacking = false

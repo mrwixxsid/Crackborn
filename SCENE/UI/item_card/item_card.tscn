@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cex8x2g6uj6yr"]
+
+[ext_resource type="StyleBox" uid="uid://btkdo13npucia" path="res://Styles/common_style.tres" id="1_d3btr"]
+[ext_resource type="Script" uid="uid://cl5ka5bsk2m4l" path="res://SCENE/UI/item_card/item_card.gd" id="2_6v8db"]
+
+[node name="ItemCard" type="Button" unique_id=65377323]
+custom_minimum_size = Vector2(80, 80)
+theme_override_styles/normal = ExtResource("1_d3btr")
+icon_alignment = 1
+script = ExtResource("2_6v8db")
+
+[node name="Item_Icon" type="TextureRect" parent="." unique_id=1777445984]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

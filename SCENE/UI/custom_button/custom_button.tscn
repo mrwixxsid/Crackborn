@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6nx6okd22ay4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk46m"]
+bg_color = Color(0.212654, 0.418307, 0.686253, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr85h"]
+bg_color = Color(0.388235, 0.388235, 0.388235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CustomButton" type="Button"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.5
+offset_top = -28.0
+offset_right = 32.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_wk46m")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gr85h")
+text = "select"

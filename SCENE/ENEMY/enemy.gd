@@ -85,3 +85,7 @@ func _on_hurt_box_components_on_damage(hitbox: HitBoxComponents) -> void:
 	if hitbox.knock_back_power > 0:
 		var dir:= hitbox.source.global_position.direction_to(global_position)
 		apply_knockback(dir, hitbox.knock_back_power)
+
+
+func _on_health_components_on_unit_died() -> void:
+	Global.on_enemy_died.emit(self)

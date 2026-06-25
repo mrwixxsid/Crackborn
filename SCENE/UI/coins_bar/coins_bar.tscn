@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://duo1tocp6ghhq"]
+
+[ext_resource type="Texture2D" uid="uid://chm4srsn6xd8y" path="res://assets/sprites/Gold/gold_1.png" id="1_4qf6a"]
+[ext_resource type="Script" uid="uid://coh411vys2f3u" path="res://SCENE/UI/coins_bar/coins_bar.gd" id="1_pr6qo"]
+
+[node name="CoinsBar" type="HBoxContainer" unique_id=795473016]
+custom_minimum_size = Vector2(128, 90)
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 181.0
+offset_bottom = 122.0
+script = ExtResource("1_pr6qo")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1070543921]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_4qf6a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Coins" type="Label" parent="." unique_id=831453917]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "30"

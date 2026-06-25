@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bj530aifitpw1"]
+[gd_scene format=3 uid="uid://bj530aifitpw1"]
 
 [ext_resource type="PackedScene" uid="uid://c27grk6uaced2" path="res://SCENE/UNIT/unit.tscn" id="1_dkwwj"]
 [ext_resource type="Script" uid="uid://btk5l1v5dr5md" path="res://SCENE/ENEMY/enemy.gd" id="2_2vs54"]
@@ -18,53 +18,54 @@ radius = 37.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_2wwa1"]
 radius = 33.0151
 
-[node name="EnemyChaserSlow" instance=ExtResource("1_dkwwj")]
+[node name="EnemyChaserSlow" unique_id=1272514401 instance=ExtResource("1_dkwwj")]
 collision_layer = 2
 script = ExtResource("2_2vs54")
 flock_push = 20
 stats = ExtResource("3_bf154")
 
-[node name="sprite" parent="Visuals" index="1"]
+[node name="sprite" parent="Visuals" parent_id_path=PackedInt32Array(630055806) index="1" unique_id=2074103563]
 texture = ExtResource("2_eju6a")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1" unique_id=1536417197]
 position = Vector2(0, -24)
 shape = SubResource("CircleShape2D_bf154")
 debug_color = Color(0.804285, 0.542852, 0.938695, 0.580392)
 
-[node name="VisionArea" type="Area2D" parent="." index="3"]
+[node name="VisionArea" type="Area2D" parent="." index="3" unique_id=163636841]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" index="0" unique_id=1409630273]
 position = Vector2(0, -29)
 shape = SubResource("CircleShape2D_eju6a")
 
-[node name="HurtBoxComponents" parent="." index="4"]
+[node name="HurtBoxComponents" parent="." index="4" unique_id=1310557839]
 collision_layer = 8
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponents" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponents" index="0" unique_id=643847542]
 z_index = 2
 position = Vector2(-1, -29)
 shape = SubResource("CircleShape2D_wppdf")
 debug_color = Color(0.856488, 0.372095, 0.838288, 0.42)
 
-[node name="HitBoxComponent" parent="." index="5" instance=ExtResource("5_2wwa1")]
+[node name="HitBoxComponent" parent="." index="5" unique_id=266231743 instance=ExtResource("5_2wwa1")]
 collision_layer = 4
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0" unique_id=1378477546]
 position = Vector2(0, -25)
 shape = SubResource("CircleShape2D_2wwa1")
 debug_color = Color(0, 0.537746, 0.965973, 0.42)
 
-[node name="HealthBar" parent="." index="7"]
+[node name="HealthBar" parent="." index="7" unique_id=420810117]
 back_color = Color(0.0407784, 0, 0.347632, 1)
 fill_color = Color(0.974801, 0.9508, 0.460796, 1)
 
-[node name="KnockBackTimer" type="Timer" parent="." index="9"]
+[node name="KnockBackTimer" type="Timer" parent="." index="9" unique_id=1893558207]
 wait_time = 0.4
 one_shot = true
 
+[connection signal="on_unit_died" from="HealthComponents" to="." method="_on_health_components_on_unit_died"]
 [connection signal="timeout" from="KnockBackTimer" to="." method="_on_knock_back_timer_timeout"]

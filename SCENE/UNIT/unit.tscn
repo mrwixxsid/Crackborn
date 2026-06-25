@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c27grk6uaced2"]
+[gd_scene format=3 uid="uid://c27grk6uaced2"]
 
 [ext_resource type="Texture2D" uid="uid://devt2xbk78rej" path="res://assets/sprites/shadow.png" id="1_4xipe"]
 [ext_resource type="Script" uid="uid://dyseenggp42na" path="res://SCENE/UNIT/unit.gd" id="1_tm4ix"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cqp50fmrcr6k1" path="res://SCENE/Components/hurt_box_components.tscn" id="4_g1hoi"]
 [ext_resource type="PackedScene" uid="uid://bpjpadid300u5" path="res://SCENE/Components/health_components.tscn" id="5_prij6"]
 [ext_resource type="PackedScene" uid="uid://yiwcoomp5onw" path="res://SCENE/UI/health/health_bar.tscn" id="6_oawbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ac255"]
+radius = 62.289646
 
 [sub_resource type="Animation" id="Animation_prij6"]
 length = 0.001
@@ -263,44 +266,44 @@ _data = {
 &"move": SubResource("Animation_tm4ix")
 }
 
-[node name="Unit" type="Area2D"]
+[node name="Unit" type="Area2D" unique_id=1476863058]
 script = ExtResource("1_tm4ix")
 
-[node name="Visuals" type="Node2D" parent="."]
+[node name="Visuals" type="Node2D" parent="." unique_id=630055806]
 unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
 
-[node name="shadow" type="Sprite2D" parent="Visuals"]
+[node name="shadow" type="Sprite2D" parent="Visuals" unique_id=1450276086]
 modulate = Color(0.152941, 0.152941, 0.152941, 0.588235)
 scale = Vector2(0.8, 1)
 texture = ExtResource("1_4xipe")
 
-[node name="sprite" type="Sprite2D" parent="Visuals"]
+[node name="sprite" type="Sprite2D" parent="Visuals" unique_id=2074103563]
 unique_name_in_owner = true
 position = Vector2(0, -61)
 texture = ExtResource("3_tm4ix")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1536417197]
+position = Vector2(0, -31)
 scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_ac255")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=448311582]
 root_node = NodePath("../Visuals")
-libraries = {
-&"": SubResource("AnimationLibrary_prij6")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_prij6")
+autoplay = &"idle"
 
-[node name="HurtBoxComponents" parent="." instance=ExtResource("4_g1hoi")]
+[node name="HurtBoxComponents" parent="." unique_id=1310557839 instance=ExtResource("4_g1hoi")]
 
-[node name="HealthComponents" parent="." instance=ExtResource("5_prij6")]
+[node name="HealthComponents" parent="." unique_id=1621009712 instance=ExtResource("5_prij6")]
 
-[node name="HealthBar" parent="." instance=ExtResource("6_oawbi")]
+[node name="HealthBar" parent="." unique_id=420810117 instance=ExtResource("6_oawbi")]
 offset_left = -46.0
 offset_top = -90.0
 offset_right = 50.0
 offset_bottom = -70.0
 
-[node name="FlashTimer" type="Timer" parent="."]
+[node name="FlashTimer" type="Timer" parent="." unique_id=890816435]
 wait_time = 0.2
 one_shot = true
 

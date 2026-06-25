@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemUpgrade" load_steps=3 format=3 uid="uid://ubxmgb715x04"]
+
+[ext_resource type="Texture2D" uid="uid://ccm3apetb532i" path="res://assets/sprites/Upgrades/1.png" id="1_jtgb2"]
+[ext_resource type="Script" uid="uid://dbqgyntc3sb1d" path="res://RESOURCES/Upgrades/item_upgrade.gd" id="2_yjcj4"]
+
+[resource]
+script = ExtResource("2_yjcj4")
+value = 10.0
+description = "+10"
+stat_id = "luck"
+item_name = "HP Regen VI"
+item_icon = ExtResource("1_jtgb2")
+item_tier = 3
+item_type = 1
+item_cost = 0
+metadata/_custom_type_script = "uid://dbqgyntc3sb1d"

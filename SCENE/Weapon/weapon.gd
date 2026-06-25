@@ -153,10 +153,23 @@ func can_use_weapon() -> bool:
 
 
 func _on_range_area_area_entered(area: Area2D) -> void:
-	targets.push_back(area)          ## store the target in array list
+	#targets.push_back(area)          ## store the target in array list
+	var enemy := area.get_parent() as Enemy
 
+	if enemy:
+		targets.push_back(enemy)
+
+
+#func _on_range_area_area_exited(area: Area2D) -> void:
+	#targets.erase(area)               ## Erase target form array
+	#if targets.size() == 0:
+		#closest_target = null  
 
 func _on_range_area_area_exited(area: Area2D) -> void:
-	targets.erase(area)               ## Erase target form array
-	if targets.size() == 0:
-		closest_target = null  
+	var enemy := area.get_parent() as Enemy
+
+	if enemy:
+		targets.erase(enemy)
+
+	if targets.is_empty():
+		closest_target = null

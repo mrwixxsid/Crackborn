@@ -29,7 +29,9 @@ func _ready() -> void:
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
 	
-	add_weapon(preload("res://RESOURCES/Items/Weapons/melee/punch/item_punch_1.tres"))
+	#add_weapon(preload("res://RESOURCES/Items/Weapons/melee/punch/item_punch_1.tres"))
+	#add_weapon(preload("res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_1.tres"))
+	#add_weapon(preload("res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_1.tres"))
 	add_weapon(preload("res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_1.tres"))
 
 	
@@ -102,6 +104,9 @@ func can_dash () -> bool:
 func is_facing_right() -> bool:
 	return visuals.scale.x == -0.5
 
+func update_player_new_wave():
+	stats.health += stats.health_increase_per_wave
+	health_components.setup(stats)
 
 func _on_dash_timer_timeout() -> void:
 	print("Dash ended")
@@ -111,3 +116,12 @@ func _on_dash_timer_timeout() -> void:
 	collision.set_deferred("disabled", false)
 	dash_cooldown_timer.start()
 	print(dash_cooldown_timer.is_stopped())
+
+
+func _on_hp_regen_timer_timeout() -> void:
+	if health_components.current_health <= 0:
+		return
+	if health_components.current_health < stats.health:
+		var heal = stats.hp_regen
+		health_components.heal(heal)
+		Global.on_create_heal_text.emit(self, heal)
