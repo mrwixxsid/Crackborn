@@ -1,29 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpeqfu0xery5a"]
+[gd_scene format=3 uid="uid://cpeqfu0xery5a"]
 
 [ext_resource type="Script" uid="uid://b6vh1oewcqsy6" path="res://SCENE/Weapon/weapon.gd" id="1_b7lio"]
+[ext_resource type="Shader" uid="uid://cgonnxt3qv5n3" path="res://shaders/outline.gdshader" id="2_hcabp"]
+[ext_resource type="Texture2D" uid="uid://dxq2vr8kj6e58" path="res://assets/sprites/Weapons/Melee/Weapon_Punch.png" id="3_4b1m3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b7lio"]
+resource_local_to_scene = true
+shader = ExtResource("2_hcabp")
+shader_parameter/outline_color = Color(0.89333194, 0.9265613, 1, 1)
+shader_parameter/outline_width = 4.00000019
+shader_parameter/glow_intensity = 1.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkla2"]
-radius = 160.0
+radius = 210.0
 
-[node name="WeaponBase" type="Node2D"]
+[node name="WeaponBase" type="Node2D" unique_id=343033074]
 script = ExtResource("1_b7lio")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1149471716]
 z_index = 1
+material = SubResource("ShaderMaterial_b7lio")
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4b1m3")
 
-[node name="RangeArea" type="Area2D" parent="."]
+[node name="RangeArea" type="Area2D" parent="." unique_id=956105726]
 collision_layer = 0
 collision_mask = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea" unique_id=1042671116]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_fkla2")
 
-[node name="CooldownTimer" type="Timer" parent="."]
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1212618471]
 one_shot = true
 
-[node name="WeaponBehavior" type="Node2D" parent="."]
+[node name="WeaponBehavior" type="Node2D" parent="." unique_id=752243535]
 
 [connection signal="area_entered" from="RangeArea" to="." method="_on_range_area_area_entered"]
 [connection signal="area_exited" from="RangeArea" to="." method="_on_range_area_area_exited"]

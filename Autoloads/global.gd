@@ -17,6 +17,9 @@ const COINS_SCENE = preload("uid://jb6fqlf5dd2e")
 
 const ITEM_CARD_SCENE = preload("uid://cex8x2g6uj6yr")
 
+## MENU SELECTION CARD
+const SELECTION_CARD_SCENE = preload("uid://bel3w8q68k6of")
+
 
 ## UPGRADE CARD STYLE'S
 const COMMON_STYLE = preload("uid://btkdo13npucia")
@@ -40,6 +43,16 @@ const SHOP_PROBABLITY_CONFIG = {
 	"legendary": {"start_wave": 7, "base_multi": 0.02 },
 }
 
+
+
+const TIER_COLORS: Dictionary[UpgradeTier, Color] = {
+	UpgradeTier.RARE: Color(0.986, 0.935, 0.971, 1.0),
+	UpgradeTier.EPIC: Color(0.628, 0.602, 0.994, 1.0),
+	UpgradeTier.LEGENDARY: Color(0.992, 0.497, 0.989, 1.0),
+}
+
+
+
 enum UpgradeTier{
 	COMMON,
 	RARE,
@@ -52,8 +65,12 @@ var coin: int = 300
 var player: Player
 var game_paused = false
 
-var selected_weapon: ItemWeapon
+#var selected_weapon: ItemWeapon
 var equipped_weapon: Array[ItemWeapon]
+
+## RELATED TO SELECTION PANEL
+var main_player_selected: UnitStats
+var main_weapon_selected: ItemWeapon
 
 func get_harvesting_coin():
 	coin += player.stats.hervesting
