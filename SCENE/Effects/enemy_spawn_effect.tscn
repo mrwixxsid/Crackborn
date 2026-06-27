@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cpqs44cfka8y6"]
+
+[ext_resource type="Texture2D" uid="uid://cg8i01i4vek32" path="res://assets/sprites/Spawn_mark.png" id="1_hax32"]
+[ext_resource type="Script" uid="uid://dg268wg8uysy8" path="res://SCENE/Effects/enemy_spawn_effect.gd" id="1_p37me"]
+
+[sub_resource type="Animation" id="Animation_hax32"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_18kg6"]
+resource_name = "Spawn"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(0.93313426, 0.6331231, 0.92272943, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xgynv"]
+_data = {
+&"RESET": SubResource("Animation_hax32"),
+&"Spawn": SubResource("Animation_18kg6")
+}
+
+[node name="EnemySpawnEffect" type="Sprite2D" unique_id=867535908]
+texture = ExtResource("1_hax32")
+script = ExtResource("1_p37me")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1899447998]
+libraries/ = SubResource("AnimationLibrary_xgynv")

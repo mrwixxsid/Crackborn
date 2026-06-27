@@ -32,11 +32,8 @@ func _ready() -> void:
 	#add_weapon(preload("res://RESOURCES/Items/Weapons/melee/punch/item_punch_1.tres"))
 	#add_weapon(preload("res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_1.tres"))
 	#add_weapon(preload("res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_1.tres"))
-	add_weapon(preload("res://RESOURCES/Items/Weapons/range/shotgun/item_shotgun_1.tres"))
 
-	
-	
-	
+
 func _process(delta: float) -> void:
 	
 	## Pause game activities

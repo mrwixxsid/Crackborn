@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_gthw1")
+name = "Well Rounded"
 icon = ExtResource("1_dhxkb")
 health = 15
 health_increase_per_wave = 0.0

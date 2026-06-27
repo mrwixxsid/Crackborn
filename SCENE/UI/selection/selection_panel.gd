@@ -2,6 +2,8 @@ extends Panel
 class_name SelectionPanel
 
 
+signal on_selection_completed
+
 @export var players: Array[UnitStats]
 @export var start_weapons: Array[ItemWeapon]
 
@@ -23,6 +25,7 @@ func _ready() -> void:
 	
 	show_player_info(false)
 	load_players()
+	load_player_weapons()
 	
 
 func load_players():
@@ -35,6 +38,27 @@ func load_players():
 		player_container.add_child(card)
 		card.set_icon(player.icon)
 
+
+func load_player_weapons():
+	if start_weapons.is_empty():
+		return
+	
+	
+	for weapon: ItemWeapon in start_weapons:
+		var card: SelectionCard = Global.SELECTION_CARD_SCENE.instantiate()
+		card.pressed.connect(_on_weapon_selected.bind(weapon))
+		weapon_container.add_child(card)
+		card.icon = weapon.item_icon
+		
+
+
+func _on_weapon_selected(weapon: ItemWeapon):
+	Global.main_weapon_selected = weapon
+	
+	
+	
+	
+	
 func show_player_info(value: bool):
 	player_icon.visible = value
 	player_name.visible = value
@@ -68,3 +92,12 @@ func _on_player_selected(player: UnitStats):
 		player.luck,
 		player.block_chance
 	]
+
+
+func _on_continue_button_pressed() -> void:
+	if not Global.main_weapon_selected and not Global.main_player_selected:
+		return
+	SoundManager.play_sound(SoundManager.Sound.UI)
+	
+	on_selection_completed.emit()
+	hide()

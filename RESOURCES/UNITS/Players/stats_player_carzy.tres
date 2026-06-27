@@ -1,17 +1,15 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://b2wj6ef1q6jw0"]
+[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://b2wj6ef1q6jw0"]
 
 [ext_resource type="Texture2D" uid="uid://dq63ocnu3lset" path="res://assets/sprites/Players/Player_3}.png" id="1_501qk"]
 [ext_resource type="Script" uid="uid://2u2g8mrv05ur" path="res://RESOURCES/UNITS/unit_stats.gd" id="1_pdkrs"]
 
 [resource]
 script = ExtResource("1_pdkrs")
-name = "Creazy Bumb Watermelon"
-type = 0
+name = "Crazy"
 icon = ExtResource("1_501qk")
 health = 25
 health_increase_per_wave = 0.0
 damage = 2.0
-damage_increase_per_wave = 1.0
 speed = 255
 luck = 4.0
 block_chance = 2.0

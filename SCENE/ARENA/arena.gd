@@ -2,7 +2,7 @@ extends Node2D
 class_name Arena
 
 
-@export var player: Player
+#@export var player: Player
 
 @export var normal_color: Color
 @export var blocked_color: Color
@@ -28,7 +28,7 @@ var gold_list: Array[Coins]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.player = player
+	#Global.player = player
 	Global.on_create_block_text.connect(_on_create_block_text)
 	Global.on_create_damage_text.connect(_on_create_damage_text)
 	Global.on_upgrade_selected.connect(_on_upgrade_selected)
@@ -36,7 +36,8 @@ func _ready() -> void:
 	Global.on_enemy_died.connect(_on_enemy_died)
 	
 	## START WAVE
-	spawner.start_wave()
+	## NOW STARTS FROM SELECTION PANEL
+	#spawner.start_wave()
 
 
 
@@ -99,7 +100,7 @@ func clean_arena():
 				var gold_item = gold as Coins
 				gold_item.set_collection_target(target_center_pos)
 	gold_list.clear()
-
+	spawner.clear_enemies()
 
 
 
@@ -132,3 +133,14 @@ func _on_shop_panel_shop_next_wave() -> void:
 
 func _on_enemy_died(enemy: Enemy):
 	spawn_coins(enemy)
+
+
+func _on_selection_panel_on_selection_completed() -> void:
+	var player = Global.get_selected_player()
+	add_child(player)
+	player.add_weapon(Global.main_weapon_selected)
+	shop_panel.create_item_weapon(Global.main_weapon_selected)
+	Global.equipped_weapon.append(Global.main_weapon_selected)
+	
+	spawner.start_wave()
+	Global.game_paused = false

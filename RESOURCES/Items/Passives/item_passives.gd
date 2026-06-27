@@ -27,4 +27,4 @@ func apply_passive():
 		Global.player.stats[add_stats] += add_value
 		
 	if remove_value != 0:
-		Global.player.stats[remove_stats] -= remove_stats
+		Global.player.stats[remove_stats] -= remove_value

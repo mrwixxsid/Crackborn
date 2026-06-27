@@ -9,3 +9,5 @@ theme_override_styles/normal = ExtResource("1_ql6os")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_xuchi")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

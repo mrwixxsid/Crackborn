@@ -145,7 +145,7 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "Discription"
 
-[node name="CustomButton" parent="MarginContainer/VBoxContainer/Control" unique_id=2109138517 instance=ExtResource("2_bngn5")]
+[node name="ContinueButton" parent="MarginContainer/VBoxContainer/Control" unique_id=2109138517 instance=ExtResource("2_bngn5")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -265,3 +265,5 @@ theme_override_styles/normal = ExtResource("3_qumpn")
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_qumpn")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Control/ContinueButton" to="." method="_on_continue_button_pressed"]

@@ -15,6 +15,10 @@ const FLASH_MATERIALS = preload("res://SCENE/Effects/flash_materials.tres")
 const FLOATING_TEXT = preload("res://SCENE/UI/Floating_Text/floating_text.tscn")
 const COINS_SCENE = preload("uid://jb6fqlf5dd2e")
 
+const ENEMY_SPAWN_EFFECT_SCENE = preload("uid://cpqs44cfka8y6")
+
+
+
 const ITEM_CARD_SCENE = preload("uid://cex8x2g6uj6yr")
 
 ## MENU SELECTION CARD
@@ -52,6 +56,13 @@ const TIER_COLORS: Dictionary[UpgradeTier, Color] = {
 }
 
 
+var available_players: Dictionary[String, PackedScene] = {
+	"Brawler": preload("uid://dqgrdlanfub1j"),
+	"Bunny": preload("uid://b85t5svgwtf11"),
+	"Crazy": preload("uid://i2msd4hc4df2"),
+	"Knight": preload("uid://cvff23yg5n8b1"),
+	"Well Rounded": preload("uid://bjrayavoijn8f")
+}
 
 enum UpgradeTier{
 	COMMON,
@@ -86,6 +97,11 @@ func get_chance_success(chance: float) -> bool:
 	#return random < chance
 
 
+func get_selected_player() -> Player:
+	var player_scene = available_players[main_player_selected.name]
+	var player_instance = player_scene.instantiate()
+	player = player_instance
+	return player
 
 func get_tier_style(tier: UpgradeTier):
 	match tier:

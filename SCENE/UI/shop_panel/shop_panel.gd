@@ -44,7 +44,13 @@ func create_item_card() -> ItemCard:
 	return item_card
 
 
+func create_item_weapon(weapon: ItemWeapon):
+	var card = create_item_card()
+	weapons_container.add_child(card)
+	card.item = weapon
+
 func _on_new_wave_button_pressed() -> void:
+	SoundManager.play_sound(SoundManager.Sound.UI)
 	shop_next_wave.emit()
 
 
@@ -85,7 +91,7 @@ func _on_item_card_selected(card: ItemCard):
 func _on_combine_button_pressed() -> void:
 	if not context_card:
 		return
-	
+	SoundManager.play_sound(SoundManager.Sound.UI)
 	var clicked_weapon = context_card.item as ItemWeapon
 	
 	if not clicked_weapon.upgrade_to:
@@ -131,6 +137,7 @@ func _on_combine_button_pressed() -> void:
 func _on_sell_button_pressed() -> void:
 	if not context_card:
 		return
+	SoundManager.play_sound(SoundManager.Sound.UI)
 	var clicked_weapon = context_card.item as ItemWeapon
 	var coins = clicked_weapon.item_cost * 0.75
 	
@@ -139,7 +146,7 @@ func _on_sell_button_pressed() -> void:
 		
 	if weapon_to_remove:
 		Global.player.current_weapons.erase(weapon_to_remove)
-		Global.equipped_weapon.erase(weapon_to_remove)
+		Global.equipped_weapon.erase(weapon_to_remove.data)
 		weapon_to_remove.queue_free()
 		
 	context_card.queue_free()

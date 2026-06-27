@@ -11,6 +11,8 @@ func execute_attack():
 	
 	create_projectile()
 	
+	SoundManager.play_sound(SoundManager.Sound.FIRE)
+	
 	var tween = create_tween()
 	var attack_pos = Vector2(weapon.attack_start_pos.x - weapon.data.stats.recoil, weapon.attack_start_pos.y)
 	tween.tween_property(weapon.sprite, "position", attack_pos, weapon.data.stats.recoil_duration)

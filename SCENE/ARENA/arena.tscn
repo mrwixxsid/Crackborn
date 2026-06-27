@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bammbxqgyonod" path="res://SCENE/ARENA/arena.gd" id="1_f8r1u"]
 [ext_resource type="Texture2D" uid="uid://cy4xfx762bxgb" path="res://assets/sprites/BG.png" id="1_vaq4d"]
 [ext_resource type="Texture2D" uid="uid://ov4fmsbglo55" path="res://assets/sprites/Map.png" id="2_oowxy"]
-[ext_resource type="PackedScene" uid="uid://bjrayavoijn8f" path="res://SCENE/PLAYERS/player_well_rounder.tscn" id="3_btu13"]
 [ext_resource type="Script" uid="uid://t6h7dcijwc2e" path="res://SCENE/PLAYERS/camera.gd" id="4_loeep"]
 [ext_resource type="Script" uid="uid://dp4eodamnhpvk" path="res://SCENE/ARENA/spawner.gd" id="7_ung8t"]
 [ext_resource type="Script" uid="uid://bctf0tx1nnhq8" path="res://RESOURCES/Waves/wave_data.gd" id="8_0khi8"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://duo1tocp6ghhq" path="res://SCENE/UI/coins_bar/coins_bar.tscn" id="10_a8rx6"]
 [ext_resource type="PackedScene" uid="uid://dxy4s1rldj1r" path="res://SCENE/UI/upgrade_panel/upgrade_panel.tscn" id="10_ac255"]
 [ext_resource type="PackedScene" uid="uid://c3v4moa8pgijd" path="res://SCENE/UI/shop_panel/shop_panel.tscn" id="11_yx0t2"]
+[ext_resource type="PackedScene" uid="uid://cignny0sxuv0x" path="res://SCENE/UI/selection/selection_panel.tscn" id="12_a8rx6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pqwet"]
 font_size = 64
@@ -18,9 +18,8 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_0khi8"]
 font_size = 64
 
-[node name="Arena" type="Node2D" unique_id=235341757 node_paths=PackedStringArray("player")]
+[node name="Arena" type="Node2D" unique_id=235341757]
 script = ExtResource("1_f8r1u")
-player = NodePath("PlayerWellRounder")
 normal_color = Color(0.921115, 0.902041, 1, 1)
 blocked_color = Color(1, 0.463442, 0.744406, 1)
 critical_color = Color(0.946686, 0.887256, 0.522332, 1)
@@ -33,8 +32,6 @@ texture = ExtResource("1_vaq4d")
 [node name="Grass_Background" type="Sprite2D" parent="." unique_id=1208049771]
 scale = Vector2(2, 2)
 texture = ExtResource("2_oowxy")
-
-[node name="PlayerWellRounder" parent="." unique_id=1736939731 instance=ExtResource("3_btu13")]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1759633261]
 limit_left = -1200
@@ -92,7 +89,10 @@ visible = false
 unique_name_in_owner = true
 visible = false
 
+[node name="SelectionPanel" parent="GameUI" unique_id=1755742777 instance=ExtResource("12_a8rx6")]
+
 [connection signal="on_wave_completed" from="Spawner" to="." method="_on_spawner_on_wave_completed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Spawner/WaveTimer" to="Spawner" method="_on_wave_timer_timeout"]
 [connection signal="shop_next_wave" from="GameUI/ShopPanel" to="." method="_on_shop_panel_shop_next_wave"]
+[connection signal="on_selection_completed" from="GameUI/SelectionPanel" to="." method="_on_selection_panel_on_selection_completed"]
